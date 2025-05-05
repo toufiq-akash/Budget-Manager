@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+        <color name="colorPrimary">#3F51B5</color>
+        <color name="colorPrimaryDark">#303F9F</color>
+        <color name="colorAccent">#FF4081</color>
+
+    <color name="toolbar_color">#3668EB</color>
+    <color name="nav_header">#FF9B6309</color>
+    
+    <color name="dasboard_color">#FF9B6309</color>
+    <color name="income_color">#FF240740</color>
+    <color name="expense_color">#FF6C042E</color>
 </resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571530017149",
+    "project_id": "budget-manager-e158f",
+    "storage_bucket": "budget-manager-e158f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571530017149:android:5e68579a62930862973414",
+        "android_client_info": {
+          "package_name": "com.example.budgetmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2PCfwjeVRTHHPo9fm5ozqAZQC32Blw9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     tools:context=".DashBoardFragment">
 
-    <!-- problem hoitey pare -->
+    <!-- problem ache -->
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -19,6 +19,7 @@
         app:titleTextColor="@android:color/white"
         android:layout_height="?attr/actionBarSize"
         app:title="Budget Manager"
+        android:layout_marginStart="43dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:src="@drawable/dashboard"/>
@@ -147,12 +148,16 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/expense_Ft_btn"
                 android:layout_gravity="bottom|end"
-                android:backgroundTint="#07bca4"
+                android:backgroundTint="#F20528"
                 android:elevation="6dp"
                 app:fabSize="mini"
                 android:visibility="invisible"
                 app:pressedTranslationZ="12dp"
-                android:src="@drawable/expenses"/>
+                android:src="@drawable/expenses"
+                app:tint="@android:color/white"
+                android:scaleX="0.85"
+                android:scaleY="0.85"/>
+
 
         </LinearLayout>
 
@@ -176,6 +181,7 @@
                 android:visibility="invisible"
                 android:textAppearance="?android:textAppearanceSmall"
 
+
                 />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -183,12 +189,15 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/income_Ft_btn"
                 android:layout_gravity="bottom|end"
-                android:backgroundTint="#1ce10a"
+                android:backgroundTint="#4477F6"
                 android:elevation="6dp"
                 app:fabSize="mini"
                 android:visibility="invisible"
                 app:pressedTranslationZ="12dp"
                 android:src="@drawable/income"
+                app:tint="@android:color/white"
+                android:scaleX="0.85"
+                android:scaleY="0.85"
                 />
 
         </LinearLayout>
