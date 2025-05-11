@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         //not need to log in every time
 
-      // if (mAuth.getCurrentUser()!=null){
-       //  startActivity(new Intent(getApplicationContext(), HomeActivity.class));}
+       if (mAuth.getCurrentUser()!=null){
+       startActivity(new Intent(getApplicationContext(), HomeActivity.class));}
 
 
 

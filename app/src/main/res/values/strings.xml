@@ -7,4 +7,15 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="amount_label">AMOUNT:</string>
+    <string name="type_label">TYPE:</string>
+    <string name="note_label">NOTE:</string>
+
+    <string name="amount_hint">Enter amount</string>
+    <string name="type_hint">Enter type</string>
+    <string name="note_hint">Enter note</string>
+
+    <string name="cancel">CANCEL</string>
+    <string name="save">SAVE</string>
+
 </resources>
