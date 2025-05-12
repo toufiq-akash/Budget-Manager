@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,13 +21,27 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-            </LinearLayout>
 
+                <!-- App Logo Here
+                <ImageView
+                    android:id="@+id/app_logo"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/app_logo"
+                    android:layout_marginBottom="24dp"
+                    android:contentDescription="App Logo" />
+
+
+                -->
+
+
+            </LinearLayout>
         </ScrollView>
 
         <LinearLayout
@@ -51,11 +64,11 @@
                 android:textColor="#2C3E50"
                 android:paddingBottom="24dp" />
 
+            <!-- Your existing fields -->
             <EditText
                 android:id="@+id/email_login"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="8dp"
                 android:layout_marginBottom="16dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
@@ -67,7 +80,6 @@
                 android:id="@+id/password_login"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="8dp"
                 android:layout_marginBottom="16dp"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -79,7 +91,6 @@
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 android:text="Log In"

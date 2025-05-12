@@ -18,4 +18,9 @@
     <string name="cancel">CANCEL</string>
     <string name="save">SAVE</string>
 
+
+    <string name="delete">DELETE</string>
+    <string name="update">UPDATE</string>
+
+
 </resources>

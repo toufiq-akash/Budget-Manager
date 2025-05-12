@@ -1,5 +1,7 @@
 package com.example.budgetmanager;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.budgetmanager.Model.Data;
@@ -34,7 +38,23 @@ public class ExpenseFragment extends Fragment {
 
     private TextView expenseSumResult;
 
-    private FirebaseRecyclerAdapter<Data, ExpenseFragment.MyViewHolder> adapter;
+    // Edt data item
+    private EditText edtAmount;
+    private EditText edtType;
+    private EditText edtNote;
+
+    // Button for update and delete
+    private Button btnUpdate;
+    private Button btnDelete;
+
+    // Data variables for update
+    private String type;
+    private String note;
+    private int amount;
+    private String post_key;
+    private String date;
+
+    private FirebaseRecyclerAdapter<Data, MyViewHolder> adapter;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -84,9 +104,6 @@ public class ExpenseFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        // Total khoroc hisab
-
-
         mExpenseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -96,7 +113,7 @@ public class ExpenseFragment extends Fragment {
                     totalValue += data.getAmount();
                 }
                 String stTotalValue = String.valueOf(totalValue);
-                expenseSumResult.setText(stTotalValue);
+                expenseSumResult.setText(stTotalValue+".00");
             }
 
             @Override
@@ -116,21 +133,34 @@ public class ExpenseFragment extends Fragment {
                 .setQuery(mExpenseDatabase, Data.class)
                 .build();
 
-        adapter = new FirebaseRecyclerAdapter<Data, ExpenseFragment.MyViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Data, MyViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ExpenseFragment.MyViewHolder holder, int position, @NonNull Data model) {
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull Data model) {
                 holder.setType(model.getType());
                 holder.setNote(model.getNote());
                 holder.setDate(model.getData());
                 holder.setAmount(model.getAmount());
+
+                holder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        post_key = getRef(position).getKey();
+                        type = model.getType();
+                        note = model.getNote();
+                        amount = model.getAmount();
+                        date = model.getData();
+
+                        updateDataItem();
+                    }
+                });
             }
 
             @NonNull
             @Override
-            public ExpenseFragment.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.expense_recycler_data, parent, false);
-                return new ExpenseFragment.MyViewHolder(view);
+                return new MyViewHolder(view);
             }
         };
 
@@ -175,5 +205,64 @@ public class ExpenseFragment extends Fragment {
             String stAmount = String.valueOf(amount);
             mAmount.setText(stAmount);
         }
+    }
+
+    private void updateDataItem() {
+
+        AlertDialog.Builder mydialog = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        View myview = inflater.inflate(R.layout.update_data_item, null);
+        mydialog.setView(myview);
+
+        edtAmount = myview.findViewById(R.id.amount_edt);
+        edtType = myview.findViewById(R.id.type_edt);
+        edtNote = myview.findViewById(R.id.note_edt);
+
+        // Set data to EditText
+        edtType.setText(type);
+        edtType.setSelection(type.length());
+
+        edtNote.setText(note);
+        edtNote.setSelection(note.length());
+
+        edtAmount.setText(String.valueOf(amount));
+        edtAmount.setSelection(String.valueOf(amount).length());
+
+        btnUpdate = myview.findViewById(R.id.btn_upd_Update);
+        btnDelete = myview.findViewById(R.id.btn_del_Delete);
+
+        AlertDialog dialog = mydialog.create();
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                type = edtType.getText().toString().trim();
+                note = edtNote.getText().toString().trim();
+                String mdamount = edtAmount.getText().toString().trim();
+
+                if (mdamount.isEmpty()) {
+                    edtAmount.setError("Amount required");
+                    return;
+                }
+
+                int myAmount = Integer.parseInt(mdamount);
+
+                // Don't update date, keep the old one
+                Data data = new Data(date, post_key, note, type, myAmount);
+
+                mExpenseDatabase.child(post_key).setValue(data);
+                dialog.dismiss();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mExpenseDatabase.child(post_key).removeValue();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }

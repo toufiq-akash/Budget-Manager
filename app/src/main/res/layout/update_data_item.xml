@@ -141,10 +141,10 @@
                     android:gravity="center">
 
                     <Button
-                        android:id="@+id/btnCancel"
+                        android:id="@+id/btn_del_Delete"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/cancel"
+                        android:text="@string/delete"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white"
                         android:backgroundTint="@color/nav_header"/>
@@ -159,10 +159,10 @@
                     android:gravity="center">
 
                     <Button
-                        android:id="@+id/btnSave"
+                        android:id="@+id/btn_upd_Update"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/save"
+                        android:text="@string/update"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white"
                         android:backgroundTint="@color/nav_header"/>

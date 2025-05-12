@@ -18,6 +18,18 @@
         android:orientation="vertical"
         android:gravity="center_vertical"
         android:padding="16dp">
+        <!-- App Logo Here
+        <ImageView
+            android:id="@+id/app_logo"
+            android:layout_width="363dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="24dp"
+
+            android:contentDescription="App Logo"
+            android:src="@drawable/app_logo" />
+
+
+        -->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,6 +44,7 @@
             android:elevation="8dp"
             android:clipToPadding="false"
             app:cardCornerRadius="16dp">
+
 
             <TextView
                 android:layout_width="match_parent"
