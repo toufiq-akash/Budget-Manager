@@ -28,19 +28,13 @@
                 android:orientation="vertical"
                 android:gravity="center">
 
-                <!-- App Logo Here
                 <ImageView
                     android:id="@+id/app_logo"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/app_logo"
+                    android:src="@drawable/logo_reg"
                     android:layout_marginBottom="24dp"
                     android:contentDescription="App Logo" />
-
-
-                -->
-
-
             </LinearLayout>
         </ScrollView>
 
@@ -64,7 +58,6 @@
                 android:textColor="#2C3E50"
                 android:paddingBottom="24dp" />
 
-            <!-- Your existing fields -->
             <EditText
                 android:id="@+id/email_login"
                 android:layout_width="match_parent"
@@ -95,7 +88,7 @@
                 android:layout_marginBottom="16dp"
                 android:text="Log In"
                 android:textSize="16sp"
-                android:backgroundTint="#673AB7"
+                android:background="@drawable/rounded_button"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:elevation="4dp" />
@@ -108,7 +101,7 @@
                 android:text="Forget Password?"
                 android:padding="8dp"
                 android:textSize="14sp"
-                android:textColor="#6A0DAD" />
+                android:textColor="#FA002F" />
 
             <TextView
                 android:id="@+id/signup_reg"
@@ -118,7 +111,7 @@
                 android:padding="8dp"
                 android:text="Don't have an account? Sign Up here."
                 android:textSize="14sp"
-                android:textColor="#6A0DAD" />
+                android:textColor="#0309BF" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -27,8 +27,10 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        app:cardElevation="5dp"
         android:elevation="10dp"
+        android:layout_margin="15dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="16dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -132,7 +134,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content">
-                
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -143,9 +145,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:id="@+id/recycler_income">
-
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -158,7 +159,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:id="@+id/recycler_expense"
-                    android:layout_height="wrap_content">
+                    android:layout_height="200dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -234,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/income_Ft_btn"
                 android:layout_gravity="bottom|end"
-                android:backgroundTint="#4477F6"
+                android:backgroundTint="#7246C3"
                 android:elevation="6dp"
                 app:fabSize="mini"
                 android:visibility="invisible"
@@ -253,7 +254,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="16dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="#6a1B9A"
+            android:backgroundTint="#3668EB"
             app:fabSize="normal"
             android:src="@drawable/income"
             android:contentDescription="Main Add Button"

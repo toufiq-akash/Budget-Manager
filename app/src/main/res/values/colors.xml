@@ -8,7 +8,7 @@
         <color name="colorAccent">#FF4081</color>
 
     <color name="toolbar_color">#3668EB</color>
-    <color name="nav_header">#FF9B6309</color>
+    <color name="nav_header">#D10303</color>
     
     <color name="dasboard_color">#FF9B6309</color>
     <color name="income_color">#FF240740</color>
@@ -16,4 +16,5 @@
     <color name="date_color">#FF270648</color>
     <color name="expense_amount">#FFEC1D06</color>
     <color name="income_frag">#03319D</color>
+    <color name="reg_bton">#0F38F0</color>
 </resources>

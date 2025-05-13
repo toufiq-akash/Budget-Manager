@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:angle="45"
+        android:startColor="#0040FF"
+        android:endColor="#D10303"
+        />
+
+    <!-- App Logo Hereandroid:startColor="#0F1114"
+    android:endColor="#2155F3"
+    android:startColor="#023FF8"
+    android:endColor="#F44343" -->
+</shape>

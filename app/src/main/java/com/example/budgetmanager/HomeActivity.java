@@ -62,6 +62,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         setFragment(dashBoardFragment);
 
+
+
+
+        //for not changing color previous one is in notepad
         bottomnavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -69,21 +73,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                 if (itemId == R.id.dashboard) {
                     setFragment(dashBoardFragment);
-                    bottomnavigationView.setItemBackgroundResource(R.color.dasboard_color);
                     return true;
                 } else if (itemId == R.id.income) {
                     setFragment(incomeFragment);
-                    bottomnavigationView.setItemBackgroundResource(R.color.income_color);
                     return true;
                 } else if (itemId == R.id.expense) {
                     setFragment(expenseFragment);
-                    bottomnavigationView.setItemBackgroundResource(R.color.expense_color);
                     return true;
                 } else {
                     return false;
                 }
             }
         });
+
 
     }
 
