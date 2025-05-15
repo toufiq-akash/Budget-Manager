@@ -32,7 +32,7 @@
                     android:id="@+id/app_logo"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/logo_reg"
+                    android:src="@drawable/log_reg"
                     android:layout_marginBottom="24dp"
                     android:contentDescription="App Logo" />
             </LinearLayout>

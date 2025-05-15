@@ -5,6 +5,16 @@
 
         <item name="color">@android:color/white</item>
     </style>
+    <style name="NoActiveIndicator">
+        <item name="android:color">@android:color/transparent</item>
+        <item name="android:radius">0dp</item>
+        <item name="android:height">0dp</item>
+        <item name="android:width">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+    </style>
 
 
 </resources>

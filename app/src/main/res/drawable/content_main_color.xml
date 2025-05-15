@@ -5,8 +5,5 @@
         android:endColor="#D10303"
         />
 
-    <!-- App Logo Hereandroid:startColor="#0F1114"
-    android:endColor="#2155F3"
-    android:startColor="#023FF8"
-    android:endColor="#F44343" -->
+
 </shape>

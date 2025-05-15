@@ -1,5 +1,6 @@
 package com.example.budgetmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -19,17 +20,17 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
             private BottomNavigationView bottomnavigationView;
             private FrameLayout frameLayout;
 
 
-            //fragment
-
          private DashBoardFragment dashBoardFragment;
          private IncomeFragment incomeFragment;
          private ExpenseFragment expenseFragment;
+         private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar=findViewById(R.id.my_toolbar);
         toolbar.setTitle("Budget Manager");
         setSupportActionBar(toolbar);
+
+        mAuth=FirebaseAuth.getInstance();
 
 
         bottomnavigationView=findViewById(R.id.bottomNavigationbar);
@@ -118,6 +121,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragment=new IncomeFragment();
         } else if (itemId == R.id.expense) {
             fragment=new ExpenseFragment();
+
+            //logout
+        }else if (itemId == R.id.logout) {
+            mAuth.signOut();
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
 
         if (fragment != null) {

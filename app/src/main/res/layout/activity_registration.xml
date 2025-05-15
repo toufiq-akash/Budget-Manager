@@ -26,9 +26,8 @@
             android:layout_width="363dp"
             android:layout_height="120dp"
             android:layout_marginBottom="24dp"
-
             android:contentDescription="App Logo"
-            android:src="@drawable/logo_reg" />
+            android:src="@drawable/log_reg" />
 
         <ScrollView
         android:layout_width="match_parent"

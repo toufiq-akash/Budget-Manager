@@ -8,7 +8,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".IncomeFragment">
+    tools:context=".IncomeFragment"
+    >
 
     <!-- problem ache for head-->
 
@@ -28,12 +29,15 @@
         android:layout_width="match_parent"
         app:cardElevation="5dp"
         android:elevation="10dp"
+        app:cardBackgroundColor="@android:color/white"
+
         android:layout_height="wrap_content">
         
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -79,6 +83,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/recycler_id_income"
+        android:layout_margin="5dp"
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
