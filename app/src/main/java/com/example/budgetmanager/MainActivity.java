@@ -37,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //not need to log in every time
-        // if (mAuth.getCurrentUser() != null){
-          //   startActivity(new Intent(getApplicationContext(), HomeActivity.class));}
-
-
+        if (mAuth.getCurrentUser() != null){
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
 
         mDialog = new ProgressDialog(this);
         loginDetails();
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                             finish();
                             Toast.makeText(getApplicationContext(), "Log In Successful.", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Log In Failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Log In Failed.(Wrong cardinalities)", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

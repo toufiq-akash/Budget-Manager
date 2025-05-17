@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/dashboard"
-    android:title="DashBoard"
-    android:icon="@drawable/dashboard"/>
+    <item
+        android:id="@+id/dashboard"
+        android:title="DashBoard"
+        android:icon="@drawable/dashboard" />
 
-    <item android:id="@+id/income"
+    <item
+        android:id="@+id/income"
         android:title="Income"
-        android:icon="@drawable/income"/>
+        android:icon="@drawable/income" />
 
-    <item android:id="@+id/expense"
+    <item
+        android:id="@+id/expense"
         android:title="Expense"
-        android:icon="@drawable/expenses"/>
+        android:icon="@drawable/expenses" />
 
-    <item android:id="@+id/logout"
+    <item
+        android:id="@+id/logout"
         android:title="Log Out"
-        android:icon="@drawable/logout"/>
+        android:icon="@drawable/logout" />
+    <item
+        android:id="@+id/fake_spacing"
+        android:title=" "
+        android:enabled="false"
+        android:icon="@null" />
+
+
+    <item
+        android:id="@+id/nav_about"
+        android:title="About"
+        android:icon="@drawable/ic_info" />
 
 </menu>

@@ -13,7 +13,7 @@
 
     <string name="amount_hint">Enter amount</string>
     <string name="type_hint">Enter type</string>
-    <string name="note_hint">Enter note</string>
+    <string name="note_hint">Enter note (Optional)</string>
 
     <string name="cancel">CANCEL</string>
     <string name="save">SAVE</string>

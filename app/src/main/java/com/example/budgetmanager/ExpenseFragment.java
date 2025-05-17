@@ -29,25 +29,21 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ExpenseFragment extends Fragment {
 
-    // Firebase Database
     private FirebaseAuth mAuth;
     private DatabaseReference mExpenseDatabase;
 
-    // Recycler view
     private RecyclerView recyclerView;
 
     private TextView expenseSumResult;
+    private TextView noExpenseDataMessage; // Added for the message
 
-    // Edt data item
     private EditText edtAmount;
     private EditText edtType;
     private EditText edtNote;
 
-    // Button for update and delete
     private Button btnUpdate;
     private Button btnDelete;
 
-    // Data variables for update
     private String type;
     private String note;
     private int amount;
@@ -96,6 +92,9 @@ public class ExpenseFragment extends Fragment {
         mExpenseDatabase = FirebaseDatabase.getInstance().getReference().child("ExpenseDatabase").child(uid);
 
         expenseSumResult = myview.findViewById(R.id.expense_txt_result);
+        // if no expense there??
+        noExpenseDataMessage = myview.findViewById(R.id.no_expense_data_message);
+
 
         recyclerView = myview.findViewById(R.id.recycler_id_expense);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -108,12 +107,20 @@ public class ExpenseFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int totalValue = 0;
-                for (DataSnapshot mySnapshot : snapshot.getChildren()) {
-                    Data data = mySnapshot.getValue(Data.class);
-                    totalValue += data.getAmount();
+                if (!snapshot.exists()) {
+                    expenseSumResult.setText("0.00");
+                    noExpenseDataMessage.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    for (DataSnapshot mySnapshot : snapshot.getChildren()) {
+                        Data data = mySnapshot.getValue(Data.class);
+                        totalValue += data.getAmount();
+                    }
+                    String stTotalValue = String.valueOf(totalValue);
+                    expenseSumResult.setText(stTotalValue + ".00");
+                    noExpenseDataMessage.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
                 }
-                String stTotalValue = String.valueOf(totalValue);
-                expenseSumResult.setText(stTotalValue+".00");
             }
 
             @Override
@@ -177,7 +184,6 @@ public class ExpenseFragment extends Fragment {
     }
 
     private static class MyViewHolder extends RecyclerView.ViewHolder {
-
         View mView;
 
         public MyViewHolder(View itemView) {
@@ -208,7 +214,6 @@ public class ExpenseFragment extends Fragment {
     }
 
     private void updateDataItem() {
-
         AlertDialog.Builder mydialog = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View myview = inflater.inflate(R.layout.update_data_item, null);
@@ -247,7 +252,6 @@ public class ExpenseFragment extends Fragment {
 
                 int myAmount = Integer.parseInt(mdamount);
 
-                // Don't update date, keep the old one
                 Data data = new Data(date, post_key, note, type, myAmount);
 
                 mExpenseDatabase.child(post_key).setValue(data);

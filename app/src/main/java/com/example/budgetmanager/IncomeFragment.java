@@ -31,37 +31,30 @@ import java.util.Date;
 
 public class IncomeFragment extends Fragment {
 
-    // Firebase database
     private FirebaseAuth mAuth;
     private DatabaseReference mIncomeDatabase;
 
-    // Recyclerview
     private RecyclerView recyclerView;
 
-    // Text view
     private TextView incomeTotalSum;
+    private TextView noIncomeDataMessage; // Added for the message
 
-    // Update edittext
     private EditText edtAmount;
     private EditText edtType;
     private EditText edtNote;
 
-    // Button for update and delete
     private Button btnUpdate;
     private Button btnDelete;
 
-    // Data item value (update e valu dekhabe)
     private String type;
     private String note;
     private int amount;
     private String post_key;
 
-    //store original date
     private String date;
 
     private FirebaseRecyclerAdapter<Data, MyViewHolder> adapter;
 
-    // Arguments
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -98,7 +91,6 @@ public class IncomeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
         if (mUser == null) {
-            // User is not signed in, handle accordingly
             return myview;
         }
         String uid = mUser.getUid();
@@ -106,6 +98,7 @@ public class IncomeFragment extends Fragment {
         mIncomeDatabase = FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
 
         incomeTotalSum = myview.findViewById(R.id.income_txt_result);
+        noIncomeDataMessage = myview.findViewById(R.id.no_income_data_message); // Initialize the new TextView
 
         recyclerView = myview.findViewById(R.id.recycler_id_income);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -114,19 +107,24 @@ public class IncomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        // total income jog kora..
         mIncomeDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 int totalvalue = 0;
-
-                for (DataSnapshot mysnapshot : snapshot.getChildren()) {
-                    Data data = mysnapshot.getValue(Data.class);
-                    totalvalue += data.getAmount();
+                if (!snapshot.exists()) {
+                    incomeTotalSum.setText("0.00");
+                    noIncomeDataMessage.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    for (DataSnapshot mysnapshot : snapshot.getChildren()) {
+                        Data data = mysnapshot.getValue(Data.class);
+                        totalvalue += data.getAmount();
+                    }
+                    String stTotalvalue = String.valueOf(totalvalue);
+                    incomeTotalSum.setText(stTotalvalue + ".00");
+                    noIncomeDataMessage.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
                 }
-                String stTotalvalue = String.valueOf(totalvalue);
-                incomeTotalSum.setText(stTotalvalue+".00");
             }
 
             @Override
@@ -154,16 +152,13 @@ public class IncomeFragment extends Fragment {
                 holder.setDate(model.getData());
                 holder.setAmount(model.getAmount());
 
-                // for open update dialog
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         post_key = getRef(position).getKey();
                         type = model.getType();
                         note = model.getNote();
                         amount = model.getAmount();
-                        // preserve old date
                         date = model.getData();
                         updateDataItem();
                     }
@@ -231,7 +226,6 @@ public class IncomeFragment extends Fragment {
         edtType = myview.findViewById(R.id.type_edt);
         edtNote = myview.findViewById(R.id.note_edt);
 
-        // set data to edit text..
         edtType.setText(type);
         edtType.setSelection(type.length());
 
@@ -248,7 +242,6 @@ public class IncomeFragment extends Fragment {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 type = edtType.getText().toString().trim();
                 note = edtNote.getText().toString().trim();
 
@@ -260,7 +253,6 @@ public class IncomeFragment extends Fragment {
                 }
 
                 int myAmount = Integer.parseInt(mdamount);
-
 
                 Data data = new Data(date, post_key, note, type, myAmount);
 

@@ -49,6 +49,8 @@ public class DashBoardFragment extends Fragment {
 
     private TextView totalIncomeResult;
     private TextView totalExpenseresult;
+    private TextView noIncomeDataMessage;
+    private TextView noExpenseDataMessage;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mIncomeDatabase;
@@ -105,6 +107,8 @@ public class DashBoardFragment extends Fragment {
 
         totalIncomeResult = myview.findViewById(R.id.income_set_result);
         totalExpenseresult = myview.findViewById(R.id.expense_set_result);
+        noIncomeDataMessage = myview.findViewById(R.id.no_income_data_message);
+        noExpenseDataMessage = myview.findViewById(R.id.no_expense_data_message);
 
         mRecyclerIncome = myview.findViewById(R.id.recycler_income);
         mRecyclerExpense = myview.findViewById(R.id.recycler_expense);
@@ -144,11 +148,19 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int totalsum = 0;
-                for (DataSnapshot mysnap : snapshot.getChildren()) {
-                    Data data = mysnap.getValue(Data.class);
-                    totalsum += data.getAmount();
+                if (!snapshot.exists()) {
+                    totalIncomeResult.setText("0.00");
+                    noIncomeDataMessage.setVisibility(View.VISIBLE);
+                    mRecyclerIncome.setVisibility(View.GONE);
+                } else {
+                    for (DataSnapshot mysnap : snapshot.getChildren()) {
+                        Data data = mysnap.getValue(Data.class);
+                        totalsum += data.getAmount();
+                    }
+                    totalIncomeResult.setText(totalsum + ".00");
+                    noIncomeDataMessage.setVisibility(View.GONE);
+                    mRecyclerIncome.setVisibility(View.VISIBLE);
                 }
-                totalIncomeResult.setText(totalsum + ".00");
             }
 
             @Override
@@ -160,11 +172,19 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int totalsum = 0;
-                for (DataSnapshot mysnapshot : snapshot.getChildren()) {
-                    Data data = mysnapshot.getValue(Data.class);
-                    totalsum += data.getAmount();
+                if (!snapshot.exists()) {
+                    totalExpenseresult.setText("0.00");
+                    noExpenseDataMessage.setVisibility(View.VISIBLE);
+                    mRecyclerExpense.setVisibility(View.GONE);
+                } else {
+                    for (DataSnapshot mysnapshot : snapshot.getChildren()) {
+                        Data data = mysnapshot.getValue(Data.class);
+                        totalsum += data.getAmount();
+                    }
+                    totalExpenseresult.setText(totalsum + ".00");
+                    noExpenseDataMessage.setVisibility(View.GONE);
+                    mRecyclerExpense.setVisibility(View.VISIBLE);
                 }
-                totalExpenseresult.setText(totalsum + ".00");
             }
 
             @Override
@@ -261,11 +281,6 @@ public class DashBoardFragment extends Fragment {
 
                 int ouramountint = Integer.parseInt(amount);
 
-                if (TextUtils.isEmpty(note)) {
-                    edtNote.setError("Required Field");
-                    return;
-                }
-
                 String id = mIncomeDatabase.push().getKey();
                 String mDate = DateFormat.getDateInstance().format(new Date());
                 Data data = new Data(mDate, id, note, type, ouramountint);
@@ -318,10 +333,6 @@ public class DashBoardFragment extends Fragment {
 
                 if (TextUtils.isEmpty(tmtype)) {
                     type.setError("Required Field..");
-                    return;
-                }
-                if (TextUtils.isEmpty(tmnote)) {
-                    note.setError("Required Field..");
                     return;
                 }
 
@@ -390,7 +401,7 @@ public class DashBoardFragment extends Fragment {
             @Override
             public ExpenseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_expense, parent, false);
-                return new ExpenseViewHolder(view);
+                return new ExpenseViewHolder(view); // Corrected to return ExpenseViewHolder
             }
         };
 

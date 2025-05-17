@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".IncomeFragment"
-    >
-
-    <!-- problem ache for head-->
+    tools:context=".IncomeFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -30,14 +25,12 @@
         app:cardElevation="5dp"
         android:elevation="10dp"
         app:cardBackgroundColor="@android:color/white"
-
         android:layout_height="wrap_content">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -51,8 +44,7 @@
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textColor="@android:color/black"
                     android:text="Income"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold"/>
 
             </RelativeLayout>
 
@@ -69,23 +61,31 @@
                     android:id="@+id/income_txt_result"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textColor="@color/income_frag"
-                    android:text="00000.00"
-                    />
+                    android:text="00000.00"/>
 
             </RelativeLayout>
 
-
         </LinearLayout>
 
-
     </androidx.cardview.widget.CardView>
+
+    <!-- Added TextView for no income data message -->
+    <TextView
+        android:id="@+id/no_income_data_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Add income to see"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/recycler_id_income"
         android:layout_margin="5dp"
-        android:layout_height="match_parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
