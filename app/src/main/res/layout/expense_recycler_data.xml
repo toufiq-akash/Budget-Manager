@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <androidx.cardview.widget.CardView
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,7 +15,6 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_margin="5dp"
-
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -33,8 +30,7 @@
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
                 android:id="@+id/date_txt_expense"
-                android:textColor="@color/date_color"
-                />
+                android:textColor="@color/date_color" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -50,20 +46,19 @@
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
                 android:id="@+id/type_txt_expense"
-                android:textColor="@android:color/black"
-                />
+                android:textColor="@color/dasboard_color" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Note"
                 android:maxLines="1"
+                android:layout_marginTop="7dp"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
                 android:layout_below="@+id/type_txt_expense"
                 android:id="@+id/note_txt_expense"
-                android:textColor="@android:color/black"
-                />
+                android:textColor="@android:color/black" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -72,16 +67,28 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="60000"
+
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
                 android:id="@+id/amount_txt_expense"
                 android:textColor="@color/expense_amount"
-                />
+                android:paddingStart="2dp" />
+
+            <ImageView
+                android:id="@+id/edit_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignBaseline="@id/amount_txt_expense"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@id/amount_txt_expense"
+                android:contentDescription="Edit entry"
+                android:paddingStart="3dp"
+                android:src="@drawable/ic_edit_pen" />
         </RelativeLayout>
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

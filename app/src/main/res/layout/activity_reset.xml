@@ -73,11 +73,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="Send Reset Link in Email"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:textSize="16sp"
-                android:background="@drawable/rounded_button"
+                android:backgroundTint="#0F38F0"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:elevation="4dp" />
+                android:elevation="4dp"/>
             <TextView
                 android:id="@+id/back_login"
                 android:layout_width="match_parent"

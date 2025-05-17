@@ -88,7 +88,8 @@
                 android:layout_marginBottom="16dp"
                 android:text="Log In"
                 android:textSize="16sp"
-                android:background="@drawable/rounded_button"
+
+                android:backgroundTint="#0F38F0"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:elevation="4dp" />

@@ -80,16 +80,17 @@
 
             <Button
                 android:id="@+id/btn_reg"
+                android:text="Registration"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:text="Registration"
                 android:textSize="16sp"
-                android:background="@drawable/rounded_button"
+                android:backgroundTint="#0F38F0"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:elevation="4dp" />
+                android:elevation="4dp"
+                />
 
 
             <TextView
