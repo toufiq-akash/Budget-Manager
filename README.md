@@ -21,6 +21,37 @@ This Android application allows users to manage their budget by tracking income 
 2. Connect a device or start an emulator.
 3. Click "Run" to install and launch the app.
 
+## 📸 App Screenshots
+
+
+### 📝 Register Screen
+![Register](GUI_ScreenShots/registration_screen.png)
+
+### 🔐 Login Screen
+![Login](GUI_ScreenShots/login_screen.png)
+
+### 🔁 Reset Password
+![Reset Password](GUI_ScreenShots/reset_password.png)
+
+### 📊 Dashboard
+![Dashboard](GUI_ScreenShots/dashboard_screen.png)
+
+### ➕ Add Income
+![Add Income](GUI_ScreenShots/income_screen.png)
+
+### ➖ Add Expense
+![Add Expense](GUI_ScreenShots/expense_screen.png)
+
+### 📄 View Entries
+![View Entries](GUI_ScreenShots/view_entries.png)
+
+### ✏️ Edit Entry
+![Edit Entry](GUI_ScreenShots/edit_screen.png)
+
+### 🚪 Logout
+![Logout](GUI_ScreenShots/nav_drawer.png)
+
+
 - ## 📁 Folder Structure
 - `app/` - Android source code    
 - `.gradle/` - Gradle build system folder  
